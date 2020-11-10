@@ -1,0 +1,4 @@
+wget https://github.com/prometheus/alertmanager/releases/download/v0.21.0/alertmanager-0.21.0.linux-amd64.tar.gz
+tar -xzvf alertmanager-0.21.0.linux-amd64.tar.gz
+mkdir -p /home/kumar/prometheus-kumar-setup/template
+./alertmanager --config.file=alertmanager.yml

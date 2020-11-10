@@ -1,0 +1,19 @@
+global:
+  smtp_smarthost: 'localhost:25'
+  smtp_from: 'alertmanager@prometheus.example.com'
+  smtp_auth_username: ''
+  smtp_auth_password: ''
+  smtp_require_tls: false
+
+templates:
+- '/home/kumar/prometheus-kumar-setup/template/*.tmpl'
+
+route:
+  repeat_interval: 1h
+  receiver: operations-team
+
+receivers:
+- name: 'operations-team'
+  email_configs:
+  - to: 'opsteam@prometheus.example.com'
+    text: "high cpu usage"

@@ -1,0 +1,14 @@
+mkdir -p /root/certs/example.com && cd /root/certs/example.com
+openssl req \
+  -x509 \
+  -newkey rsa:4096 \
+  -nodes \
+  -keyout example.com.key \
+  -out example.com.crt
+
+sudo nginx -c /usr/local/etc/nginx/nginx.conf
+
+prometheus \
+  --config.file=/etc/prometheus/prometheus.yml \
+  --web.external-url=https://192.168.0.102/prometheus \
+  --web.route-prefix="/"

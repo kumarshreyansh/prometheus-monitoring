@@ -1,0 +1,10 @@
+groups:
+- name: example
+  rules:
+  - alert: HostHighCpuLoad
+    expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{job='node',mode="idle"}[1m])) * 100) > 60
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: Host high CPU load
